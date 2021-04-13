@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  sending-api:
+    image: sending-api
+    build:
+      context: .
+      dockerfile: sending/Send/Send.Api/Dockerfile
+  receiving-api:
+    image: receiving-api
+    build:
+      context: .
+      dockerfile: receiving/Receive/Receive.Api/Dockerfile

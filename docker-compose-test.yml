@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  sending-api-unit-test:
+    image: sending-api-unit-test
+    build:
+      context: .
+      dockerfile: sending/Send/Send.Api/Dockerfile
+      target: unittest
+  receiving-api-unit-test:
+    image: receiving-api-unit-test
+    build:
+      context: .
+      dockerfile: receiving/Receive/Receive.Api/Dockerfile
+      target: unittest

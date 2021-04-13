@@ -1,0 +1,25 @@
+version: "3.4"
+
+services:
+  sending-api-unit-test:
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:6000
+    ports:
+    - "6000:6000"
+    entrypoint:
+    - dotnet
+    - test
+    - --logger
+    - trx;LogFileName=/tests/sending-unit-test-results.xml
+  receiving-api-unit-test:
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:5000
+    ports:
+    - "5000:5000"
+    entrypoint:
+    - dotnet
+    - test
+    - --logger
+    - trx;LogFileName=/tests/receiving-unit-test-results.xml    
