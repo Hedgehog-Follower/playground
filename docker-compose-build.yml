@@ -1,0 +1,18 @@
+version: "3.7"
+
+x-args: &dockerBuildArgs
+  args:
+    BUILD_NUMBER: ${BUILD_NUMBER:-0}
+    BUILD_TAG: ${BUILD_TAG:-local}
+
+services:
+  sending-api:
+    build:
+      context: .
+      dockerfile: sending/Send/Send.Api/Dockerfile
+      <<: *dockerBuildArgs
+  receiving-api:
+    build:
+      context: .
+      dockerfile: receiving/Receive/Receive.Api/Dockerfile
+      <<: *dockerBuildArgs

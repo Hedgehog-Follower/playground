@@ -22,6 +22,14 @@ WORKDIR /app
 RUN dotnet publish receiving/Receive/Receive.Api/Receive.Api.csproj -c Release --no-restore -o /app/out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 as final
+
+ARG BUILD_NUMBER=0
+ARG BUILD_TAG=local
+
+LABEL version="3.1"
+LABEL build_number=${BUILD_NUMBER}
+LABEL build_tag=${BUILD_TAG}
+
 WORKDIR /app
 COPY --from=publish /app/out .
 
