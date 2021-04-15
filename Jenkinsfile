@@ -1,5 +1,5 @@
 pipeline {
-    agent { label: 'kubepod' }
+    agent { label 'kubepod' }
     environment {
        REGISTRY = "registry.local:5000"
     }
