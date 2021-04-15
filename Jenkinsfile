@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }
-        stage('Push') {
+        stage('Deploy') {
             steps {
               script {
                 kubernetesDeploy(configs: "./.k8s/sending-api-deployment.yml", kubeconfigId: "mykubeconfig")
