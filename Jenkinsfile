@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label: 'kubepod' }
     environment {
        REGISTRY = "registry.local:5000"
     }
@@ -37,5 +37,12 @@ pipeline {
                 }
             }
         }
+        stage('Push') {
+            steps {
+              script {
+                kubernetesDeploy(configs: "./.k8s/sending-api-deployment.yml", kubeconfigId: "mykubeconfig")
+              }
+            }
+        }        
     }
 }
